@@ -68,20 +68,12 @@ function getTotalPrice() {
 // Discount price calculation
 function getDiscountPrice(subTotal) {
     discountTotal.innerText = subTotal;
-    applyButton.addEventListener('click', function (event) {
+    applyButton.addEventListener('click', function () {
         const disCountText = inputField.value;
-        if (disCountText === 'stevekaku') {
+        if (disCountText == 'stevekaku') {
             totalAmount = subTotal - (subTotal * .20);
             discountTotal.innerText = totalAmount;
         }
     });
 };
-
-
-
-
-
-
-
-
 
