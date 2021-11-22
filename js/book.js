@@ -63,44 +63,21 @@ function getTotalPrice() {
     const subTotal = memoryTotal + storageTotal + deliveryTotal + bestTotal;
 
     totalPrice.innerText = subTotal;
-    getDiscountPrice(subTotal);
-};
-
-
-// Discount price calculation
-function getDiscountPrice(subTotal) {
     discountTotal.innerText = subTotal;
-    applyButton.addEventListener('click', function () {
-        const disCountText = inputField.value;
-        if (disCountText == 'stevekaku') {
-            totalAmount = subTotal - (subTotal * .20);
-            discountTotal.innerText = totalAmount;
-        }
-        inputField.value = '';
-    });
 };
 
+applyButton.addEventListener('click', function () {
+    getDiscountPrice();
+});
 
-
-// Discount price calculation
-// function getDiscountPrice(subTotal) {
-//     let discountTotal = document.getElementById('discount-total');
-//     let discountAmount = parseInt(discountTotal.innerText);
-//     let newAmount;
-//     if (disCountText == 'stevekaku') {
-//         newAmount = discountAmount - (discountAmount * .20);
-//     }
-//     else {
-//         newAmount = subTotal - (subtotal * .20);
-//     }
-//     discountTotal.innerText = newAmount;
-// };
-
-// applyButton.addEventListener('click', function () {
-//     const disCountText = inputField.value;
-//     getDiscountPrice(disCountText);
-// });
-
-
-
-
+function getDiscountPrice() {
+    const disCountText = inputField.value;
+    const grandTotal = discountTotal.innerText;
+    const discountPrice = parseInt(grandTotal) * .20;
+    if (disCountText == 'stevekaku') {
+        discountTotal.innerText = parseInt(grandTotal) - discountPrice;
+    } else {
+        alert('invalid number');
+    }
+    inputField.value = '';
+};
